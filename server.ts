@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import express from "express";
 import path from "path";
 import { createServer as createViteServer } from "vite";
@@ -5,6 +6,7 @@ import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
 import crypto from "node:crypto";
 import os from "node:os";
+import type { ProcessEnv } from "node";
 import {
   initDatabase,
   getRecentPhrases,
@@ -49,19 +51,29 @@ const PORT = parseInt(process.env.PORT || "3000", 10);
 app.use(express.json());
 
 // Enable CORS middleware for API routes when deployed separately from the frontend
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS, POST, PUT, DELETE");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  
+app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
+  const allowedOrigin = "https://aquamarine-chaja-ae233c.netlify.app";
+
+  res.header("Access-Control-Allow-Origin", allowedOrigin);
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, HEAD, OPTIONS, POST, PUT, DELETE"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+
   if (req.method === "OPTIONS") {
     return res.sendStatus(200);
   }
+
   next();
 });
 
 // --- Authentication Middleware ---
-const authenticateToken = (req: any, res: any, next: any) => {
+const authenticateToken = (req: express.Request & { patient?: any }, res: express.Response, next: express.NextFunction) => {
   try {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
