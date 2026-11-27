@@ -8,13 +8,28 @@
 [![Vite](https://img.shields.io/badge/Vite-6.2-646cff.svg)](https://vitejs.dev/)
 [![Node](https://img.shields.io/badge/Node->=22.5-green.svg)](https://nodejs.org/)
 
+##Project Overview
+
+ECHOLYTIX is an AI-based assistive communication project designed to help individuals who face difficulties communicating through conventional methods.
+The system uses computer vision and eye-blink detection to recognize intentional blinking patterns. These patterns are translated into Morse code, which is then decoded into meaningful text.
+Our goal is to make communication more accessible, affordable, and user-friendly through technology.
+
 **EcholytiX** is a production-ready, browser-based assistive communication platform designed for individuals with speech, neurological, or motor impairments (including ALS, stroke, cerebral palsy, and locked-in syndrome).
 
 It translates **eye blinks (Morse code)**, **hand sign gestures**, **manual Morse taps**, and **wireless smartphone camera inputs** into audible speech and text in real time — using fully on-device computer vision (MediaPipe) and lightweight neural classifiers.
 
+---
+
+## Problem Statement
+People with certain physical disabilities or motor impairments may face difficulties using keyboards, touchscreens, or traditional communication devices.
+ECHOLYTIX aims to address this challenge by introducing a camera-based communication system that converts eye-blink patterns into readable text.
+
+---
+
 Repository: **[https://github.com/sachinguptaa056-gif/echolytix](https://github.com/sachinguptaa056-gif/echolytix)**
 
 ---
+
 
 ## Key Features
 
@@ -46,6 +61,18 @@ Repository: **[https://github.com/sachinguptaa056-gif/echolytix](https://github.
 6. **Caregiver Dashboard & Emergency SOS**:
    - High-priority audible and visual distress beacon.
    - SQLite persistence for phrase logs, calibration profiles, and caregiver contact alerts.
+
+---
+
+## How It Works
+The system follows these steps:
+1.Camera captures the user's face.
+2.Facial landmarks are detected using MediaPipe.
+3.Eye Aspect Ratio (EAR) is calculated.
+4.Intentional blinks are detected.
+5.Blink duration is converted into Morse symbols.
+6.Morse code is decoded into text.
+7.The generated message is displayed to the user.
 
 ---
 
@@ -149,6 +176,24 @@ docker run -p 3000:3000 echolytix
 ├── netlify.toml                  # Netlify deployment configuration
 └── Dockerfile                    # Container configuration
 ```
+
+---
+
+## Applications
+
+•Assistive communication for people with motor impairments.
+•Alternative communication interfaces.
+•Human-computer interaction.
+•Accessibility-focused technology.
+•Computer vision-based assistive systems.
+
+---
+
+## Future Enhancements
+
+•Improved recognition accuracy.
+•Multilingual communication.
+•Mobile application integration.
 
 ---
 
