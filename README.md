@@ -8,7 +8,7 @@
 [![Vite](https://img.shields.io/badge/Vite-6.2-646cff.svg)](https://vitejs.dev/)
 [![Node](https://img.shields.io/badge/Node->=22.5-green.svg)](https://nodejs.org/)
 
-##Project Overview
+## Project Overview
 
 ECHOLYTIX is an AI-based assistive communication project designed to help individuals who face difficulties communicating through conventional methods.
 The system uses computer vision and eye-blink detection to recognize intentional blinking patterns. These patterns are translated into Morse code, which is then decoded into meaningful text.
